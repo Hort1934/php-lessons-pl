@@ -1,0 +1,49 @@
+index:
+    path: /
+    controller: App\Controller\HomeController::index
+    methods: GET
+
+book_index:
+    path: /books
+    controller: App\Controller\BookController::index
+    methods: GET
+
+book_new:
+    path: /books/new
+    controller: App\Controller\BookController::new
+    methods: GET|POST
+
+book_show:
+    path: /books/{id}
+    controller: App\Controller\BookController::show
+    methods: GET
+    requirements:
+        id: '\d+'
+
+book_edit:
+    path: /books/{id}/edit
+    controller: App\Controller\BookController::edit
+    methods: GET|POST
+    requirements:
+        id: '\d+'
+
+book_delete:
+    path: /books/{id}/delete
+    controller: App\Controller\BookController::delete
+    methods: POST
+    requirements:
+        id: '\d+'
+
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+
+
+# Register route
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register

@@ -1,0 +1,47 @@
+{# templates/main/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container">
+        <p>Welcome to the Book Library! Explore our collection of books or add a new one.</p>
+
+        <div class="actions">
+            <a class="btn" href="{{ path('book_index') }}">View all books</a>
+            <a class="btn" href="{{ path('book_new') }}">Add a new book</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+        }
+        .actions {
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}

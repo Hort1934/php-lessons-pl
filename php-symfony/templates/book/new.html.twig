@@ -1,0 +1,74 @@
+{% extends "./base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Additional styles for book creation form */
+        .book-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #c51212;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(112, 23, 23, 0.1);
+        }
+
+        .book-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .book-form input[type="text"],
+        .book-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .book-form .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-form .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="w-4/5 m-auto pt-40">
+        <h1 class="text-6xl text-center pb-12">
+            Create Book
+        </h1>
+
+        <div class="book-form" style="max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #a1a5aa;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(112, 23, 23, 0.1);">
+            {{ form_start(form) }}
+            {{ form_row(form.Title, {'attr': {'class': 'form-control mb-3'}}) }}
+            {{ form_row(form.Author, {'attr': {'class': 'form-control mb-3'}}) }}
+            {{ form_row(form.ISBN, {'attr': {'class': 'form-control mb-3'}}) }}
+            {{ form_row(form.Publication_Year, {'attr': {'class': 'form-control mb-3'}}) }}
+            {{ form_row(form.Genre, {'attr': {'class': 'form-control mb-3'}}) }}
+            {{ form_row(form.Description, {'attr': {'class': 'form-control mb-3'}}) }}
+            <button class="uppercase border border-gray-500 text-gray-600 text-lg py-1 px-4 rounded transition transition-all hover:bg-gray-800 hover:text-white mt-3">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+        </div>
+
+
+        <a class="uppercase border border-gray-500 text-gray-600 text-lg py-1 px-4 rounded transition transition-all hover:bg-gray-800 hover:text-white mt-4" href="{{ path('book_index') }}">Back to list</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Button styles */
+        .btn-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #aa0000;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-back {
+            background-color: #007bff;
+        }
+
+        .btn-edit {
+            background-color: #28a745;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+    <div class="book-details">
+        <h1 class="pt-20 sm:text-5xl md:text-7xl text-4xl font-bold text-center">
+            {{ book.title }}
+            <h2 class="text-gray-700 font-bold text-3xl py-2">
+                {% if book.image %}
+                    <!-- Добавляем класс для центрирования изображения -->
+                    <img src="{{ book.image }}" alt="Book Image" class="mx-auto">
+                {% else %}
+                    No Image Available
+                {% endif %}
+                <p></p>
+
+        </h1>
+
+        <div class="py-10 text-center">
+            <div class="inline-block sm:pt-1">
+                <h2 class="font-bold">
+                    {{ book.author }}
+                </h2>
+
+                <p class="text-sm text-gray-600">
+                    {{ book.publicationYear }} | {{ book.genre }}
+                </p>
+
+                <p class="text-xl py-6">
+                    {{ book.description }}
+                </p>
+            </div>
+        </div>
+
+
+
+{#        <div class="btn-container">#}
+{#            <a class="btn btn-back" href="{{ path('book_index') }}">Back to List</a>#}
+{#            <a class="btn btn-edit" href="{{ path('book_edit', {'id': book.id}) }}">Edit</a>#}
+{#            {{ include('book/_delete_form.html.twig') }}#}
+{#        </div>#}
+
+        <div class="btn-container" style="text-align: center; margin-top: 20px;">
+            <a href="{{ path('book_index', {'id': book.id}) }}" class="btn">
+                Back to List
+            </a>
+
+            <a href="{{ path('book_edit', {'id': book.id}) }}" class="btn">
+                Edit
+            </a>
+        </div>
+
+        {{ include('book/_delete_form.html.twig') }}
+
+
+    </div>
+{% endblock %}
